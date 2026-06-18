@@ -7,7 +7,7 @@ try:
     with open(input_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 2. 將資料寫回新檔案，並加上換行與縮排
+    #將資料寫回新檔案，並加上換行與縮排
     # indent=4 代表每一層縮排 4 個空格；ensure_ascii=False 可以讓中文正常顯示不變成亂碼
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)

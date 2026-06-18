@@ -2,7 +2,7 @@ import json
 import glob
 from collections import Counter
 
-files = glob.glob("=科技.json")
+files = glob.glob("=*.json")
 
 print(f"找到 {len(files)} 個檔案\n")
 
