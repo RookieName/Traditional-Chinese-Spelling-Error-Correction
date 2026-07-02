@@ -10,3 +10,7 @@ venv/
 .env
 
 useless/
+
+jibea_test.py
+
+model_test.py
