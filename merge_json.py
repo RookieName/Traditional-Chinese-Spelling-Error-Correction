@@ -6,7 +6,7 @@ import os
 data_dir = "./Trie_data"
 
 # 找所有 = 開頭的 json
-files = glob.glob(os.path.join(data_dir, "=*.json"))
+files = glob.glob(os.path.join(data_dir, "*.json"))
 
 print(f"找到 {len(files)} 個檔案")
 
