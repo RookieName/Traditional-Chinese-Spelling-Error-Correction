@@ -11,6 +11,10 @@ venv/
 
 useless/
 
-jibea_test.py
+jieba_*.py
 
 model_test.py
+
+執行.txt
+
+test.py
