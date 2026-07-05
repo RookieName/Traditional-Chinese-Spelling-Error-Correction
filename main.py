@@ -1,11 +1,8 @@
-import json
-import pickle
 import os
 from opencc import OpenCC
 import jieba
 from pycorrector import MacBertCorrector
 from trie import Trie
-import math
 import glob
 from sklearn.metrics import precision_score, recall_score, f1_score
 from correct_sys import correct_sys
