@@ -2,20 +2,14 @@ from lexicon_utils import add_all_words, add_alignment
 
 
 new_words = [
-    "好吃"
+    "張紙"
 ]
 
 new_alignments = [
     {
-        "taiwanese": "USB隨身碟",
-        "chinese": "U盤",
+        "taiwanese": "",
+        "chinese": "",
         "english": "",
-        "description": ""
-    },
-    {
-        "taiwanese": "行動電源",
-        "chinese": "充電寶",
-        "english": "Power Bank",
         "description": ""
     }
 ]
