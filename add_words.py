@@ -2,7 +2,7 @@ from lexicon_utils import add_all_words, add_alignment
 
 
 new_words = [
-    "張紙"
+
 ]
 
 new_alignments = [

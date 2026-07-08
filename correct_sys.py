@@ -69,6 +69,14 @@ def get_candidate_pool(query):
 
     return filtered
 
+def generate_candidates(query):
+
+    pool = get_candidate_pool(query)
+
+    result = rank(query, pool)
+
+    return result
+
 def rank(query, candidates):
 
     scored = []
@@ -112,20 +120,11 @@ def rank(query, candidates):
     return [w for _, w in scored[:20]]
 
     
-
-def generate_candidates(query):
-
-    pool = get_candidate_pool(query)
-
-    result = rank(query, pool)
-
-    return result
-
 def preprocess(text):
 
-    text = cc_t2s.convert(text)
-
     text = align_to_model(text)
+
+    text = cc_t2s.convert(text)
 
     return text
 
@@ -136,7 +135,7 @@ def postprocess(text, original_text):
     text = back_to_taiwan(text)
 
     # ====== 保留原句關鍵詞（他/她 這種）======
-    keep_tokens = {"他", "她", "你", "我", "我們", "你們", "他們", "她們", "台北","台灣","台灣人","台中","台南","台東"}
+    keep_tokens = {"他", "她", "你", "妳", "妳們", "你們", "他們", "她們"}
 
     orig_words = jieba.lcut(original_text)
     new_words = jieba.lcut(text)
@@ -153,12 +152,13 @@ def postprocess(text, original_text):
 
     return "".join(fixed)
 
+
 def macbert_correct(text):
 
     result = macbert.correct(text)
 
     target = result.get("target", text)
-    #print(target)
+    print(target)
 
     return target
 
@@ -167,7 +167,7 @@ def macbert_correct(text):
 def lexical_correct(text):
 
     words = jieba.lcut(text)
-    #print(words)
+    print(words)
 
     corrected = []
 
@@ -193,11 +193,8 @@ def lexical_correct(text):
 
         #confidence guard（避免亂修）
         if candidates and edit_distance(word, candidates[0]) <= 2:
-            """
-            print(
-                f"{word} -> {candidates[:5]}"
-            )
-            """
+            
+            print(f"{word} -> {candidates[:5]}")
             
             corrected.append(candidates[0])
         else:
@@ -224,23 +221,4 @@ def correct_sys(text):
     return text
 
 
-"""
-sentences = [
-    "我們去日月談坐遊艇，看湖面很平靜。"
-]
 
-for s in sentences:
-    result = correct_sys(s)
-    print("原句：", s)
-    print("結果：", result)
-    print("-" * 50)
-"""
-
-
-"""
-"昨天去了咖啡廳，點了題拉米蘇和美式啡" 舊的好
-"台積電昨天上張了10點"  單一字抓不出來
-"台積電昨天張了10點"
-"我有27張紙" 張紙不知道為甚麼會切不出來
- 
-"""
