@@ -52,11 +52,11 @@ class Trie:
 
         for ch in word:
             if ch not in node.children:
-                return 0
+                return None
 
             node = node.children[ch]
 
         if node.is_word:
             return node.pos
 
-        return 0
+        return None
