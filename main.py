@@ -49,13 +49,6 @@ def compute_metrics(all_tp, all_fp, all_fn):
 
 
 # ----------------------------
-# MacBERT baseline
-# ----------------------------
-def run_macbert(text):
-    return macbert.correct(text).get("target", text)
-
-
-# ----------------------------
 # Your system
 # ----------------------------
 def run_yours(text):
@@ -67,10 +60,9 @@ def run_yours(text):
 # ----------------------------
 def evaluate():
 
-    mac_tp = mac_fp = mac_fn = 0
     sys_tp = sys_fp = sys_fn = 0
 
-    error_files = glob.glob(os.path.join(DATA_DIR, "test13_error.txt"))
+    error_files = glob.glob(os.path.join(DATA_DIR, "*_error.txt"))
 
     for error_file in error_files:
 
@@ -86,15 +78,6 @@ def evaluate():
             gold_text = f.read().strip()
 
         # -------------------------
-        # MacBERT
-        # -------------------------
-        mac_pred = run_macbert(error_text)
-        tp, fp, fn = char_level_eval(mac_pred, gold_text)
-        mac_tp += tp
-        mac_fp += fp
-        mac_fn += fn
-
-        # -------------------------
         # Your system
         # -------------------------
         sys_pred = run_yours(error_text)
@@ -106,22 +89,12 @@ def evaluate():
         print("=================================")
         print("Error:", error_text)
         print("Gold :", gold_text)
-        print("Mac  :", mac_pred)
         print("Yours:", sys_pred)
 
-    # -------------------------
-    # Metrics
-    # -------------------------
-    mac_metrics = compute_metrics(mac_tp, mac_fp, mac_fn)
     sys_metrics = compute_metrics(sys_tp, sys_fp, sys_fn)
 
     print("\n========== FINAL RESULT ==========")
 
-    print("\n🔵 MacBERT")
-    print(f"Accuracy : {mac_metrics[0]:.4f}")
-    print(f"Precision: {mac_metrics[1]:.4f}")
-    print(f"Recall   : {mac_metrics[2]:.4f}")
-    print(f"F1       : {mac_metrics[3]:.4f}")
 
     print("\n🟢 Your System")
     print(f"Accuracy : {sys_metrics[0]:.4f}")
