@@ -48,5 +48,19 @@ def add_alignment(new_pairs):
     print(f"alignment.json：新增 {added} 筆，目前 {len(data)} 筆")
 
 
+def add_word_freq(word, freq=1, pos="x"):
+    with open("all_words_freq_pos_ckip.json", "r", encoding="utf-8") as f:
+        lexicon = json.load(f)
+
+    lexicon[word] = {
+        "freq": freq,
+        "pos": pos
+    }
+
+    with open ("all_words_freq_pos_ckip.json", "w", encoding="utf-8") as f:
+        json.dump(lexicon, f, ensure_ascii=False, indent=4)
+
+    print(f"已新增：{word}")
+
 
 
