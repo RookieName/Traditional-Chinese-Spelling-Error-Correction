@@ -12,6 +12,8 @@ venv/
 
 useless/
 
+data/
+
 jieba_*.py
 
 model_test.py
@@ -30,5 +32,3 @@ error_analysis.json
 missing_bpmf.json
 
 error*.json
-
-DATA/
