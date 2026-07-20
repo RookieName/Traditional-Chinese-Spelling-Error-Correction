@@ -1,4 +1,5 @@
 import json
+import re
 
 def add_all_words(new_words):
     
@@ -63,9 +64,16 @@ def add_word_freq(word, freq=1, pos="x"):
     print(f"已新增：{word}")
 
 def add_bpmf(word,bpm):
+    word = word.strip()
+    bpm = bpm.strip()
+
     # 讀取原本資料
     with open("char2bpmf.json", "r", encoding="utf-8") as f:
         char2bpm = json.load(f)
+
+    if len(word) != 1 or not re.search(r'[\u4e00-\u9fff]', word):
+        print("請輸入單一中文字")
+        return
 
     if word not in char2bpm:
         char2bpm[word] = []
@@ -106,4 +114,5 @@ new_alignments = [
 
 #add_alignment(new_alignments)
 
-add_word_freq("崇禮門", 1, "Nb")
+#add_word_freq("崇禮門", 1, "Nb")
+

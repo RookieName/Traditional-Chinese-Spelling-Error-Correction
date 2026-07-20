@@ -1,6 +1,7 @@
 # 忽略所有 Python 自動產生的快取資料夾
 __pycache__/
 *.pyc
+.vscode/
 
 # 忽略虛擬環境資料夾
 venv/
@@ -25,3 +26,7 @@ test.py
 .ipynb_checkpoints/
 
 error_analysis.json
+
+missing_bpmf.json
+
+error*.json
