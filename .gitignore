@@ -14,7 +14,8 @@ useless/
 .ipynb_checkpoints/
 
 #藏資料
-DATA/
+DATA/*
+!DATA/README.md
 
 debug/
 
