@@ -28,3 +28,5 @@ build_ckip_cache.ipynb
 ckip_cache.pkl
 
 macbert*.py
+
+trie.pkl
