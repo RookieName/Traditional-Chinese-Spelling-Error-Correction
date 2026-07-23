@@ -16,21 +16,15 @@ useless/
 #藏資料
 DATA/
 
-
-
-jieba_*.py
+debug/
 
 model_test.py
 
 執行.txt
 
-*_test.py
-
-
-
-
-error_analysis.json
-
-missing_bpmf.json
-
 error*.json
+
+build_ckip_cache.ipynb
+ckip_cache.pkl
+
+macbert*.py

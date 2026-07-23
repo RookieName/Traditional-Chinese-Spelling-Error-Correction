@@ -3,12 +3,14 @@ import json
 import pickle
 from collections import defaultdict
 
+DATA_DIR = "DATA"
+
 # 詞庫+詞頻+詞性
-with open("all_words_freq_pos_ckip.json", "r", encoding="utf-8") as f:
+with open(f"{DATA_DIR}/all_words_freq_pos_ckip.json", "r", encoding="utf-8") as f:
     lexicon = json.load(f)
 
 # 字庫+詞頻+詞性
-with open("single_chars_pos_ckip.json", "r", encoding="utf-8") as f:
+with open(f"{DATA_DIR}/single_chars_pos_ckip.json", "r", encoding="utf-8") as f:
     chars = json.load(f)
 
 length_dict = defaultdict(list)
